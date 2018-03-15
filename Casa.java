@@ -27,6 +27,9 @@ public class Casa extends Edificacao {
 		this.comPiscina = comPiscina;
 	}
 	
-	
+	public void showEdificacao(){
+		System.out.printf(isComGaragem()+" "+isComPiscina()+"|" );
+		super.showEdificacao();
+	}
 
 }

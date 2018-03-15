@@ -9,6 +9,25 @@ public class Edificio extends Edificacao {
 		this.quantasVagasBox=quantasVagasBox;
 	}
 	
-	
+	public int getQuantosElevadores() {
+		return quantosElevadores;
+	}
+
+	public void setQuantosElevadores(int quantosElevadores) {
+		this.quantosElevadores = quantosElevadores;
+	}
+
+	public int getQuantasVagasBox() {
+		return quantasVagasBox;
+	}
+
+	public void setQuantasVagasBox(int quantasVagasBox) {
+		this.quantasVagasBox = quantasVagasBox;
+	}
+
+	public void showEdificacao(){
+		System.out.printf(getQuantosElevadores()+" "+getQuantasVagasBox()+"|" );
+		super.showEdificacao();
+	}
 	
 }
