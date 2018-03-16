@@ -55,36 +55,33 @@ public double calculaIptu(int x1, int y1, int x2, int y2){
 			if (x2<getMapa().length){
 				if(y2<getMapa()[x2].length){
 						for(;menorX<=maiorX;menorX++){
-							for(;menorY<=maiorY;menorY++){
-								if(getMapa()[menorX][menorY].getEdificacao() instanceof Casa){
+							//System.out.print("\n MenorX "+menorX);
+
+							for(int y=menorY;y<=maiorY;y++){
+								//System.out.print("\n Y"+y);
+
+								if(getMapa()[menorX][y].getEdificacao() instanceof Casa){
 									//calculo de iptu para casa
-									if(getMapa()[menorX][menorY].getEdificacao().getMaterial()=="Alvenaria" && ((Casa)getMapa()[menorX][menorY].getEdificacao()).isComPiscina()==true ){
+									if(getMapa()[menorX][y].getEdificacao().getMaterial()=="Alvenaria" && ((Casa)getMapa()[menorX][y].getEdificacao()).isComPiscina()==true ){
 										//calculo iptu casa alvenaria com piscina
-										totalIPTU = totalIPTU + getMapa()[menorX][menorY].getArea() * 1.5 + (getMapa()[menorX][menorY].getEdificacao().getAreaConstruida() * 1.12 + 2.3);
+										totalIPTU = totalIPTU + getMapa()[menorX][y].getArea() * 1.5 + (getMapa()[menorX][y].getEdificacao().getAreaConstruida() * 1.12 + 2.3);
 									}else{
 										//calculo iptu casa alvenaria sem piscina
-										totalIPTU = totalIPTU + getMapa()[menorX][menorY].getArea() * 1.5 + (getMapa()[menorX][menorY].getEdificacao().getAreaConstruida() * 1.12);
+										totalIPTU = totalIPTU + getMapa()[menorX][y].getArea() * 1.5 + (getMapa()[menorX][y].getEdificacao().getAreaConstruida() * 1.12);
 									} 
-									if (getMapa()[menorX][menorY].getEdificacao().getMaterial()=="Madeira" && ((Casa)getMapa()[menorX][menorY].getEdificacao()).isComPiscina()==true){
+									if (getMapa()[menorX][y].getEdificacao().getMaterial()=="Madeira" && ((Casa)getMapa()[menorX][y].getEdificacao()).isComPiscina()==true){
 										//calculo iptu casa madeira com piscina
-										totalIPTU = totalIPTU + getMapa()[menorX][menorY].getArea() * 1.5 + (getMapa()[menorX][menorY].getEdificacao().getAreaConstruida() * 1.04 + 2.3);
+										totalIPTU = totalIPTU + getMapa()[menorX][y].getArea() * 1.5 + (getMapa()[menorX][y].getEdificacao().getAreaConstruida() * 1.04 + 2.3);
 									}else{
 										//calculo iptu casa madeira sem piscina
-										totalIPTU = totalIPTU + getMapa()[menorX][menorY].getArea() * 1.5 + (getMapa()[menorX][menorY].getEdificacao().getAreaConstruida() * 1.04);
+										totalIPTU = totalIPTU + getMapa()[menorX][y].getArea() * 1.5 + (getMapa()[menorX][y].getEdificacao().getAreaConstruida() * 1.04);
 									}
-								}else if(getMapa()[menorX][menorY].getEdificacao() instanceof Edificio){
-									System.out.print("\n");
-									System.out.print("\n");
-									System.out.print("\n");
-									System.out.print("BOLEIA");
-									System.out.print("\n");
-									System.out.print("\n");
-									System.out.print("\n");
+								}else if(getMapa()[menorX][y].getEdificacao() instanceof Edificio){
 									//calculo iptu edificio
-										totalIPTU = totalIPTU + getMapa()[menorX][menorY].getArea() * 1.4 + (getMapa()[menorX][menorY].getEdificacao().getAndares()*0.3) + ((((Edificio)getMapa()[menorX][menorY].getEdificacao()).getQuantosElevadores() * 0.2) +(getMapa()[menorX][menorY].getEdificacao().getAreaConstruida() * 1.3))+(((Edificio)getMapa()[menorX][menorY].getEdificacao()).getQuantasVagasBox() * 0.15);
+										totalIPTU = totalIPTU + getMapa()[menorX][y].getArea() * 1.4 + (getMapa()[menorX][y].getEdificacao().getAndares()*0.3) + ((((Edificio)getMapa()[menorX][y].getEdificacao()).getQuantosElevadores() * 0.2) +(getMapa()[menorX][y].getEdificacao().getAreaConstruida() * 1.3))+(((Edificio)getMapa()[menorX][y].getEdificacao()).getQuantasVagasBox() * 0.15);
 								}else{
 									//calculo iptu sem edificacao
-									totalIPTU = totalIPTU + getMapa()[menorX][menorY].getArea() * 1.75;
+									totalIPTU = totalIPTU + getMapa()[menorX][y].getArea() * 1.75;
 								}
 							}
 						}
